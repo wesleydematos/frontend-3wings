@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 export interface iProductContext{
-
+  createProduct(data: iProduct): Promise<void>
 }
 
 export interface iProductContextProps {

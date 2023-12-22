@@ -1,10 +1,8 @@
-import { iProduct } from '../../contexts/Products/types'
+import { useProductContext } from '../../contexts/Products'
 import ProductForm from '../ProductForm'
 
 function CreateProduct() {
-  function createProduct(data: iProduct){
-    console.log(data)
-  }
+  const { createProduct } = useProductContext()
 
   return (
     <div className='px-5'>
