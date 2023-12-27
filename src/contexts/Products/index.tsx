@@ -8,6 +8,7 @@ const ProductContext = createContext<iProductContext>({} as iProductContext)
 export const ProductProvider = ({ children }: iProductContextProps) => {
   const [loading, setLoading] = useState(false)
   const [categories, setCategories] = useState([])
+  const [products, setProducts] = useState([])
 
   async function createProduct(data: iProduct){
     try {
@@ -30,6 +31,18 @@ export const ProductProvider = ({ children }: iProductContextProps) => {
     } 
   }
 
+  async function getProducts(){
+    setLoading(true)
+    
+    try {
+      const { data } = await api.get("/products")
+      setProducts(data)
+      setLoading(false)
+    } catch (error) {
+      console.error("Falha ao buscar produtos.", error)
+    } 
+  }
+
   return (
     <ProductContext.Provider 
       value={{ 
@@ -37,7 +50,9 @@ export const ProductProvider = ({ children }: iProductContextProps) => {
         loading,
         setLoading, 
         getCategories,
-        categories
+        categories,
+        getProducts,
+        products
       }}
     >
       {children}

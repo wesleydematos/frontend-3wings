@@ -1,7 +1,25 @@
+import { useEffect } from 'react'
+import { useProductContext } from '../../contexts/Products'
+import ProductCard from '../ProductCard'
+
 function AllProducts() {
+  const { getProducts, products } = useProductContext()
+
+  useEffect(() => {
+    getProducts()
+  }, [])
+  
   return (
-    <div>
-      all products
+    <div className='px-5'>
+      <ul>
+        {products.length > 0 ? (
+          products.map((product) => (
+            <ProductCard product={product} key={product.id} />
+          ))
+        ) : (
+          <p>Nenhum produto encontrado :/</p>
+        )}
+      </ul>
     </div>
   )
 }

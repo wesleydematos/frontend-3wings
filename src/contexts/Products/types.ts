@@ -6,6 +6,9 @@ export interface iProductContext{
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
   getCategories(): Promise<void> 
   categories: [] | iCategory[]
+  getProducts(): Promise<void>
+  products: [] | iProductResponse[]
+
 }
 
 export interface iProductContextProps {
@@ -20,6 +23,17 @@ export interface iProduct {
   brand: string
   photoUrl: string
   price: number
+}
+
+export interface iProductResponse {
+  description: string | undefined
+  whenToTake: string | undefined
+  category: string
+  name: string
+  brand: string
+  photoUrl: string
+  price: number
+  id: number
 }
 
 export interface iCategory {
