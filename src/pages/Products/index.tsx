@@ -8,7 +8,7 @@ function Products() {
   const [isCreate, setIsCreate] = useState(true)
 
   return (
-    <div className='flex flex-col min-h-screen w-screen bg-tx text-white'>
+    <div className='flex flex-col min-h-screen max-w-screen bg-tx text-white overflow-x-hidden pb-4'>
       <header className='flex w-full mt-1 mb-5 items-center'>
         <Link to='/' className='ml-5'>
           <FaHome  className='h-[30px] w-[30px] mt-2 ml-2'/>
@@ -29,7 +29,12 @@ function Products() {
         </nav>
       </header>
       {
-        isCreate ? <CreateProduct/> : <AllProducts/>
+        isCreate ? 
+        <div className='flex flex-col'>
+          <h1 className='mx-auto text-body font-semibold text-2xl'>Formulário de criação:</h1>
+          <CreateProduct/>
+        </div> 
+        : <AllProducts/>
       }
     </div>
   )

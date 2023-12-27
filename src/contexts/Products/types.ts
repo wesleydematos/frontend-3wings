@@ -2,6 +2,10 @@ import { ReactNode } from 'react'
 
 export interface iProductContext{
   createProduct(data: iProduct): Promise<void>
+  loading: boolean
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  getCategories(): Promise<void> 
+  categories: [] | iCategory[]
 }
 
 export interface iProductContextProps {
@@ -16,4 +20,9 @@ export interface iProduct {
   brand: string
   photoUrl: string
   price: number
+}
+
+export interface iCategory {
+  id: number
+  name: string
 }
