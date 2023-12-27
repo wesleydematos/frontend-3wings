@@ -2,23 +2,17 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { iProductFormProps } from './types'
 import { useProductContext } from '../../contexts/Products'
-import { useEffect } from 'react'
 import productSchema from '../../schemas/productSchema'
 import Loading from '../Loading'
 
 function ProductForm({handleFunction}: iProductFormProps) {
-  const { loading, getCategories, categories } = useProductContext()
+  const { loading, categories } = useProductContext()
 
   const {
     register,
     handleSubmit,
     formState: {errors},
   } = useForm({resolver: yupResolver(productSchema)})
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useEffect(() => {
-    getCategories()
-  }, [])
 
   return  (
     <>
