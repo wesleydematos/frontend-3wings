@@ -28,14 +28,20 @@ function Products() {
           </button>
         </nav>
       </header>
+      <div className='flex flex-col'>
       {
         isCreate ? 
-        <div className='flex flex-col'>
-          <h1 className='mx-auto text-body font-semibold text-2xl'>Formulário de criação:</h1>
+        <>
+          <h1 className='mx-5 mb-3 text-body font-semibold text-2xl w-fit'>Formulário de criação:</h1>
           <CreateProduct/>
-        </div> 
-        : <AllProducts/>
-      }
+        </> 
+        : 
+        <>
+          <h1 className='mx-5 mb-3 text-body font-semibold text-2xl w-fit'>Produtos:</h1>
+          <AllProducts/>
+        </>
+        }
+      </div> 
     </div>
   )
 }

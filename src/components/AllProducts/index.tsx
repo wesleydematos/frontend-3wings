@@ -11,7 +11,7 @@ function AllProducts() {
   
   return (
     <div className='px-5'>
-      <ul>
+      <ul className='flex flex-wrap gap-5 justify-center'>
         {products.length > 0 ? (
           products.map((product) => (
             <ProductCard product={product} key={product.id} />
