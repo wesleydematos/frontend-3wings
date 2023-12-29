@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react'
-import { iProduct, iProductContext, iProductContextProps } from './types'
+import { iCategory, iProduct, iProductContext, iProductContextProps, iProductResponse } from './types'
 import { api } from '../../services/api'
 import { toast } from 'react-toastify'
 
@@ -7,8 +7,10 @@ const ProductContext = createContext<iProductContext>({} as iProductContext)
 
 export const ProductProvider = ({ children }: iProductContextProps) => {
   const [loading, setLoading] = useState(false)
-  const [categories, setCategories] = useState([])
-  const [products, setProducts] = useState([])
+  const [productDetails, setProductDetails] = useState(false)
+  const [categories, setCategories] = useState([] as iCategory[])
+  const [products, setProducts] = useState([] as iProductResponse[])
+  const [product, setProduct] = useState({} as iProductResponse)
 
   async function createProduct(data: iProduct){
     try {
@@ -52,7 +54,11 @@ export const ProductProvider = ({ children }: iProductContextProps) => {
         getCategories,
         categories,
         getProducts,
-        products
+        products,
+        product,
+        setProduct,
+        productDetails,
+        setProductDetails
       }}
     >
       {children}

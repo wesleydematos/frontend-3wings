@@ -5,10 +5,13 @@ export interface iProductContext{
   loading: boolean
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
   getCategories(): Promise<void> 
-  categories: [] | iCategory[]
+  categories: iCategory[]
   getProducts(): Promise<void>
-  products: [] | iProductResponse[]
-
+  products: iProductResponse[]
+  product: iProductResponse
+  setProduct: React.Dispatch<React.SetStateAction<iProductResponse>>
+  productDetails: boolean
+  setProductDetails: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export interface iProductContextProps {
