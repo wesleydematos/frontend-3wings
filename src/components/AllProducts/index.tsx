@@ -3,11 +3,11 @@ import { useProductContext } from '../../contexts/Products'
 import ProductCard from '../ProductCard'
 
 function AllProducts() {
-  const { getProducts, products } = useProductContext()
+  const { getProducts, products, changeProduct } = useProductContext()
 
   useEffect(() => {
     getProducts()
-  }, [])
+  }, [changeProduct])
   
   return (
     <div className='px-5'>

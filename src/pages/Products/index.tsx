@@ -5,9 +5,11 @@ import { useProductContext } from '../../contexts/Products'
 import CreateProduct from '../../components/CreateProduct'
 import AllProducts from '../../components/AllProducts'
 import ProductDetails from '../../components/ProductDetails'
+import DeleteModal from '../../components/DeleteModal'
+import EditModal from '../../components/EditModal'
 
 function Products() {
-  const { productDetails } = useProductContext()
+  const { productDetails, exclude, edit } = useProductContext()
   const [isCreate, setIsCreate] = useState(true)
 
   return (
@@ -46,6 +48,8 @@ function Products() {
         }
       </div> 
       { productDetails && <ProductDetails />}
+      { exclude && <DeleteModal /> }
+      { edit && <EditModal/> }
     </main>
   )
 }

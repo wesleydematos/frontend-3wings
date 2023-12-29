@@ -6,7 +6,7 @@ import productSchema from '../../schemas/productSchema'
 import Loading from '../Loading'
 
 function ProductForm({handleFunction}: iProductFormProps) {
-  const { loading, categories } = useProductContext()
+  const { loading, categories, product } = useProductContext()
 
   const {
     register,
@@ -41,6 +41,7 @@ function ProductForm({handleFunction}: iProductFormProps) {
               placeholder='ex: Whey Protein' 
               className='h-[35px] text-black rounded-lg pl-2'
               id='name'
+              defaultValue={product.name || ""}
             />
             {errors.name && <span className='text-accent'>{errors.name.message}</span>}
           </div>
@@ -52,6 +53,7 @@ function ProductForm({handleFunction}: iProductFormProps) {
               placeholder='ex: https://...' 
               className='h-[35px] text-black rounded-lg pl-2'
               id='photoUrl'
+              defaultValue={product.photoUrl || ""}
             />
             {errors.photoUrl && <span className='text-accent'>{errors.photoUrl.message}</span>}
           </div>        
@@ -63,6 +65,7 @@ function ProductForm({handleFunction}: iProductFormProps) {
               placeholder='ex: O produto contém...' 
               className='h-[35px] text-black rounded-lg pl-2'
               id='description'
+              defaultValue={product.description || ""}
             />
             {errors.description && <span className='text-accent'>{errors.description.message}</span>}
           </div>
@@ -74,6 +77,7 @@ function ProductForm({handleFunction}: iProductFormProps) {
               placeholder='ex: O produto deve ser utilizado...' 
               className='h-[35px] text-black rounded-lg pl-2'
               id='whenToTake'
+              defaultValue={product.whenToTake || ""}
             />
             {errors.whenToTake && <span className='text-accent'>{errors.whenToTake.message}</span>}
           </div>
@@ -85,6 +89,7 @@ function ProductForm({handleFunction}: iProductFormProps) {
               placeholder='ex: Growth' 
               className='h-[35px] text-black rounded-lg pl-2'
               id='brand'
+              defaultValue={product.brand || ""}
             />
             {errors.brand && <span className='text-accent'>{errors.brand.message}</span>}
           </div>
@@ -96,6 +101,7 @@ function ProductForm({handleFunction}: iProductFormProps) {
               placeholder='ex: 150' 
               className='h-[35px] text-black rounded-lg pl-2'
               id='price'
+              defaultValue={product.price || ""}
             />
             {errors.price && <span className='text-accent'>Preço do produto deve ser um número positivo e é obrigatório!</span>}
           </div>

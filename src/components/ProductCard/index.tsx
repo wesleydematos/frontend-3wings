@@ -3,17 +3,23 @@ import { iProductResponse } from '../../contexts/Products/types'
 import { useProductContext } from '../../contexts/Products'
 
 function ProductCard({ product }: { product: iProductResponse }) {
-  const { setProduct, setProductDetails } = useProductContext()
+  const { setProduct, setProductDetails, setEdit, setExclude } = useProductContext()
   const { name, photoUrl, brand, price } = product
 
   return (
     <li className='flex flex-col items-center px-[30px] py-3 bg-white w-[250px] rounded-xl shadow-xl text-tx'>
       <div className='flex items-start'>
-        <button className='hover:text-accent'>
+        <button 
+          className='hover:text-accent'
+          onClick={() => {setExclude(true); setProduct(product)}}
+        >
           <FaTrashAlt />
         </button>
-        <img src={photoUrl} alt={name} className='w-[150px] h-[150px]'/>
-        <button className='hover:text-primary-hover'>
+        <img src={photoUrl} alt={name} className='w-[150px] h-[150px] hover:scale-110'/>
+        <button 
+          className='hover:text-primary-hover'
+          onClick={() => {setEdit(true); setProduct(product)}}
+        >
           <FaPencilAlt />
         </button>
       </div>

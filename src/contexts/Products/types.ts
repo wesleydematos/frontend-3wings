@@ -12,6 +12,13 @@ export interface iProductContext{
   setProduct: React.Dispatch<React.SetStateAction<iProductResponse>>
   productDetails: boolean
   setProductDetails: React.Dispatch<React.SetStateAction<boolean>>
+  deleteProduct(id: number): Promise<void>
+  exclude: boolean
+  edit: boolean
+  setEdit: React.Dispatch<React.SetStateAction<boolean>>
+  setExclude: React.Dispatch<React.SetStateAction<boolean>>
+  changeProduct: boolean
+  editProduct(data: iProduct): Promise<void>
 }
 
 export interface iProductContextProps {
